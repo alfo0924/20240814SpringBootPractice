@@ -1,14 +1,23 @@
 package fcu.web._20240814springbootpractice;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class controller {
 
-@RequestMapping("/SpringBootInitPractice")
+    @Autowired
+    @Qualifier("canonPrinter")
+    private Printer printer;
+
+
+    @RequestMapping("/SpringBootInitPractice")
 public String test(){
+
     System.out.println("Hello from SpringBoot !");
+    printer.print("Printer says hello !");
     return "hello from JAVASpringBoot ";
     }
 
